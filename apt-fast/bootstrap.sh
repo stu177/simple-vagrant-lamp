@@ -9,19 +9,24 @@ WEBROOT='./public_html'
 # Create project folder
 sudo mkdir "/home/vagrant/${PROJECT}"
 
+# Install apt-fast
+sudo add-apt-repository ppa:saiarcot895/myppa
+sudo apt-get update
+sudo apt-get install -y apt-fast
+
 # Update / upgrade
 sudo apt-get update
-sudo apt-get -y upgrade
+sudo apt-fast -y upgrade
 
 # Apache 2.5 and PHP 5.5
-sudo apt-get install -y apache2
-sudo apt-get install -y php5
+sudo apt-fast install -y apache2
+sudo apt-fast install -y php5
 
 # MySQL
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
-sudo apt-get install -y mysql-server
-sudo apt-get install -y php5-mysql
+sudo apt-fast install -y mysql-server
+sudo apt-fast install -y php5-mysql
 
 # Adminer
 sudo mkdir /usr/share/adminer
@@ -51,7 +56,7 @@ sudo a2enmod rewrite
 sudo service apache2 restart
 
 # Git
-sudo apt-get install -y git
+sudo apt-fast install -y git
 
 # Composer
 curl -s https://getcomposer.org/installer | php
