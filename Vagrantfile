@@ -24,7 +24,10 @@ Vagrant.configure("2") do |config|
     config.vm.network "forwarded_port", guest: 3306, host: 33067
 
     # Sync between the web root of the VM and the 'sites' directory
-    config.vm.synced_folder ".", "/home/vagrant/yourproject"
+    config.vm.synced_folder ".", "/home/vagrant/yourproject", id: "vagrant-root",
+        owner: "vagrant",
+        group: "www-data",
+        mount_options: ["dmode=775,fmode=664"]
 
     config.vm.provision "shell", path: "bootstrap.sh"
 
