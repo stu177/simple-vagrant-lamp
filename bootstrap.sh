@@ -3,7 +3,7 @@
 PASSWORD='password'
 PROJECT='yourproject'
 
-# Webroot relative to project folder, i.e. ./ for /home/vagrant or ./public for /home/vagrant/public
+# Webroot relative to synced folder, i.e. ./ for /home/vagrant or ./public for /home/vagrant/public
 WEBROOT='./public_html'
 
 # Create project folder
