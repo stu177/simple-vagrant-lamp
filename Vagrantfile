@@ -13,6 +13,9 @@ Vagrant.configure("2") do |config|
     # Every Vagrant virtual environment requires a box to build off of.
     config.vm.box = vmBox
 
+    # Hostname
+    config.vm.hostname = 'app.dev'
+
     # Networking
     config.vm.network :private_network, ip: "192.168.70.10"
 

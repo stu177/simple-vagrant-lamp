@@ -29,6 +29,14 @@ sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again p
 sudo apt-get install -y mysql-server
 sudo apt-get install -y php5-mysql
 
+# Adminer
+sudo mkdir /usr/share/adminer
+sudo wget "http://www.adminer.org/latest.php" -O /usr/share/adminer/latest.php
+sudo ln -s /usr/share/adminer/latest.php /usr/share/adminer/adminer.php
+echo "Alias /adminer /usr/share/adminer/adminer.php" | sudo tee /etc/apache2/conf-available/adminer.conf
+sudo a2enconf adminer.conf
+sudo service apache2 restart
+
 # Setup hosts file
 VHOST=$(cat <<EOF
 <VirtualHost *:80>
